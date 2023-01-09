@@ -42,10 +42,10 @@ var empresasAnexo24 = configAnexo24.Empresas;
 
 loopIni(expedientes, rfcList1, "modal_expedientes");
 loopIni(anexo30, rfcList2, "modal_anexo_30");
-loopIni(empresasAnexo24, rfcList3, "modal_anexo_24");
+//loopIni(empresasAnexo24, rfcList3, "modal_anexo_24");
 emptyObject(expedientes, tituloExp, menuRfcExp, pag1);
 emptyObject(anexo30, tituloA30, menuRfcA30, pag2);
-emptyObject(empresasAnexo24, tituloA24, menuRfcA24, pag3);
+//emptyObject(empresasAnexo24, tituloA24, menuRfcA24, pag3);
 
 function emptyObject(menu, title, list, pag) {
   const isMyObjectEmpty = Object.keys(menu).length === 0;
@@ -97,7 +97,7 @@ const exit = document.getElementById('exit');
 
 display(menu_rfc_exp, zoeExp);
 display(menu_rfc_a30, zoe30);
-display(menu_rfc_a24, anexo24);
+//display(menu_rfc_a24, anexo24);
 
 function display(menu_rfc, componente) {
   componente.addEventListener('click', function() {
