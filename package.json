@@ -1,12 +1,12 @@
 {
   "name": "zoe360",
   "version": "1.3",
-  "icon": "/LOGO_ZOE_360_con_modulos.ico",
+  "icon": "assets/icons/mac/logo360MAC.icns",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --platform=win32 --arch=x64 --icon=./LOGO_ZOE_360_con_modulos.ico",
+    "build": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/logo360MAC.icns --prune=true --out=release-builds",
     "devStart": "nodemon server js"
   },
   "keywords": [],

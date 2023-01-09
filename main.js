@@ -10,7 +10,7 @@ const { Menu } = require('electron');
 Menu.setApplicationMenu(null);
 var ipc = require('electron').ipcMain;
 const WindowPosition = require( 'electron-window-position');
-require('electron-reload')(__dirname);
+//require('electron-reload')(__dirname);
 
 let mainWindow = null;
 let childWindow = null;
@@ -37,7 +37,7 @@ const createWindow = () => {
   mainWindow.loadFile('src/login.html');
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
   
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
@@ -63,7 +63,7 @@ const createWindow = () => {
   
     childWindow.loadFile("src/config_language.html");
 
-    childWindow.webContents.openDevTools()
+    //childWindow.webContents.openDevTools()
     
     childWindow.once("ready-to-show", () => {
       childWindow.show();
