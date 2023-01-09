@@ -1,0 +1,49 @@
+{
+  "name": "zoe360",
+  "version": "1.3",
+  "icon": "/LOGO_ZOE_360_con_modulos.ico",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . --platform=win32 --arch=x64 --icon=./LOGO_ZOE_360_con_modulos.ico",
+    "devStart": "nodemon server js"
+  },
+  "keywords": [],
+  "author": "Zoé It Customs",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "ejs": "^3.1.8",
+    "electron": "^21.1.0",
+    "electron-alert": "^0.1.20",
+    "electron-packager": "^17.1.0",
+    "electron-window-position": "^1.0.1",
+    "express": "^4.18.2",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "handlebars-csp-hash": "^0.1.0",
+    "ini": "^3.0.1",
+    "jquery": "^3.6.1",
+    "js-ini": "^1.5.1",
+    "jsdom": "^20.0.3",
+    "lodash": "^4.17.21",
+    "mssql": "^9.0.1",
+    "node": "^19.0.0",
+    "nodemailer": "^6.8.0",
+    "odbc": "^2.4.6",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "sweetalert": "^2.1.2",
+    "tedious": "^15.1.2"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.70",
+    "dotenv": "^16.0.3",
+    "electron-builder": "^23.6.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "electron-reloader": "^1.2.3",
+    "nodemon": "^2.0.20"
+  }
+}

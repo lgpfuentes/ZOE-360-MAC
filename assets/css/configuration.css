@@ -1,0 +1,240 @@
+/*.container {
+    background-color: white;
+    transform: scale(0.94);
+    overflow: hidden;
+    border-radius: 10px;
+    height: 400px;
+}*/
+
+body {
+    background-color: var(--bg-color2);
+    color: var(--font-color2);
+}
+
+/* Sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 240px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;/* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    
+}
+
+.sidenav__title {
+    color: var(--font-color2);
+    font-size: 25px;
+    padding: 6px 8px 6px 16px;
+    font-weight: 600;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: var(--font-color2);
+    display: block;
+    transition: all 0.4s ease;
+    font-size: 16px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    background-color: var(--heading-color);
+}
+
+.active {
+    background-color: var(--heading-color);
+}
+
+.main {
+    margin-left: 240px; /* Same as the width of the sidebar */
+    padding: 4rem 2rem;
+    font-size: 14px;
+    color: var(--font-color2);
+}
+
+.main h4 {
+    color: var(--font-color2);
+}
+
+.config__title {
+    color: var(--font-color2);
+    font-weight: 500;
+}
+
+.language__control {
+    padding: 6px 8px 6px 16px;
+    border: 3px solid transparent;
+    width: 250px;
+    font-size: 16px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.language__control:hover {
+    border: 3px solid var(--font-color1);
+}
+
+.sidenav a img {
+    margin-right: .75rem;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+}
+
+/*----- Language -----*/
+.active-lang {
+    border: 3px solid var(--font-color1);
+}
+
+/*----- Directory -----*/
+/* Style the tab */
+.tab {
+    overflow: hidden;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 18px;
+    font-weight: 600;
+    color: var(--font-color2);
+    background-color: var(--heading-color);
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: var(--heading-color);
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: var(--heading-color);
+}
+
+.tabcontent, .select__directory {
+    border: .5px solid var(--heading-color);
+    padding: .75rem 1rem;
+}
+
+.tabcontent {
+    border-top-right-radius: 12px;
+}
+
+.select__directory {
+    border-radius: 0 0 12px 12px;
+    margin-top: 3px;
+}
+
+.select__directory .control {
+    gap: 1rem;
+    width: 100%;
+}
+
+.path__input {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.path__input:focus {
+}
+
+:focus {
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+} 
+
+.input__control {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.input__icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.input__icon:hover {
+    opacity: .4;
+}
+
+/*---- Personalize ----*/
+.select__theme {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.theme {
+    padding: 3rem;
+    border-radius: 7px;
+}
+
+.theme__dynamic {
+    background: linear-gradient(90deg, rgba(174,188,251,1) 0%, rgba(131,128,222,1) 51%, rgba(104,100,224,1) 100%);
+}
+
+.theme__simple {
+    background-color: #7e98b6;
+}
+
+.theme__dark {
+    background-color: #1A2650;
+}
+
+.theme__group {
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.active-theme {
+    border: 1px solid var(--font-color1);
+}
+
+.theme__group:hover {
+    border: 1px solid var(--font-color1);
+}
+
+/*---- Support ----*/
+.mail__group {
+    text-align: left;
+    padding: .75rem;
+    border-radius: 7px;
+    background-color: var(--heading-color);
+    margin-block: 1rem;
+    transition: all 0.4s ease;
+}
+
+.mail__group:hover {
+    transform: translateY(4px);
+}
+
+.mail {
+    color: var(--font-color1);
+    text-decoration: underline;
+}

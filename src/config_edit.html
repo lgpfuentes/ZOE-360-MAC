@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/configuration.css">
+    <script>
+        const electron = require('electron');
+        const ipc = electron.ipcRenderer;
+        function cerrar(){
+            ipc.send("cerrarConfig", "cerrar ventana");
+        }
+    </script>
+    <title>Configuration</title>
+</head>
+<body>
+    <div class="title-bar-container">
+        <div class="title-bar"></div>
+        <div id="title-bar-btns">
+            <!--<button class="min-btn" id="min-btn" onclick="minimizar()"> <img class="min-icon" src="../assets/img/icons/minimizar.png" alt="Minimizar"> </button>-->
+            <!--<button class="max-btn" id="max-btn" onclick="maximizar()"> <img class="max-icon" src="../assets/img/icons/maximizar.png" alt="Maximizar"> </button>-->
+            <button class="close-btn" id="close-btn" onclick="cerrar()">  <img class="close-icon" src="../assets/img/icons/close.png" alt="Cerrar"> </button>
+        </div>
+    </div>
+    <!-- Side navigation -->
+    <div class="sidenav">
+        <h1 data-i18n-key="configuration" class="sidenav__title">Configuración</h1>
+        <div></div>
+        <a data-i18n-key="lang" class="sidenav__links" href="config_language.html">Idioma</a>
+        <a data-i18n-key="directory" class="sidenav__links" href="config_directory.html">Directorio</a>
+        <a data-i18n-key="edit" class="sidenav__links active" href="config_edit.html">Personalización</a>
+        <a data-i18n-key="support" class="sidenav__links" href="config_support.html">Soporte</a>
+    </div>
+
+    <!-- <a data-i18n-key="lang" class="sidenav__links" href="config_language.html"><img src="../assets/img/icons/lang.svg" alt="language">Idioma</a>
+        <a data-i18n-key="directory" class="sidenav__links" href="config_directory.html"><img src="../assets/img/icons/folder.svg" alt="Directory">Directorio</a>
+        <a data-i18n-key="edit" class="sidenav__links active" href="config_edit.html"><img src="../assets/img/icons/edit.svg" alt="Personalize">Personalización</a>
+        <a data-i18n-key="support" class="sidenav__links" href="config_support.html"><img src="../assets/img/icons/support.svg" alt="Support">Soporte</a>-->
+
+    <div class="main">
+        <h2 data-i18n-key="edit-title" class="config__title">Personalización</h2>
+        <div class="config__directory">
+            <div class="tabcontent">
+                <p data-i18n-key="edit-text">Elige el tema que más se ajuste a tu experiencia de usuario</p>
+            </div>
+            <div class="select__directory select__theme">
+                <div class="theme__group" id="dinamico" onclick="changeBackground('dinamico')">
+                    <div class="theme theme__dynamic"></div>
+                    <p data-i18n-key="theme-dynamic" class="theme__text">Dinámico</p>
+                </div>
+                <div class="theme__group" id="sencillo" onclick="changeBackground('sencillo')">
+                    <div class="theme theme__simple"></div>
+                    <p data-i18n-key="theme-simple" class="theme__text">Sencillo</p>
+                </div>
+                <div class="theme__group" id="oscuro" onclick="changeBackground('oscuro')">
+                    <div class="theme theme__dark"></div>
+                    <p data-i18n-key="theme-dark" class="theme__text">Oscuro</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="language__menu">
+        <div class="language__control"></div>
+    </div>
+    <script src="scripts/language.js"></script>
+</body>
+</html>

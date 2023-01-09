@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
+    <title>Zoé 360</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/menu.css">
+    <link rel="stylesheet" href="../assets/css/modal_login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>-->
+</head>
+<body id="fondo_pantalla" class="dinamico">
+    
+    <div class="login">
+        <div class="login__img">
+            <div class="img_zoe">
+                <img src="../assets/img/logo.png" alt="ZOE IT CUSTOMS">
+                <h1>360</h1>
+            </div>
+        </div>
+
+        <div class="login__right">
+            <div class="top-right" id="title-bar-btns">
+                <button class="min-btn" id="min-btn" onclick="minimizar()"> <img class="min-icon" src="../assets/img/icons/minimizar.png" alt="Minimizar"> </button>
+                <button class="max-btn" id="max-btn" onclick="maximizar()"> <img class="max-icon" src="../assets/img/icons/maximizar.png" alt="Maximizar"> </button>
+                <button class="close-btn" id="close-btn" onclick="cerrar()">  <img class="close-icon" src="../assets/img/icons/close.png" alt="Cerrar"> </button>
+            </div>
+
+            <div class="card login__card">
+                <select class="select-menu absolute t-n2 top-right" data-i18n-switcher class="locale-switcher top-right">
+                    <option id="español" value="es">Español</option>
+                    <option id="english" value="en">English</option>
+                </select>
+                <div class="login__header">
+                    <img src="../assets/img/LOGO_ZOE_360_con_modulos.png" alt="">
+                </div>
+                <form class="login__form" id="login__form">
+                    <div class="inputField">
+                        <label data-i18n-key="user" for="user">Usuario</label>
+                        <input data-i18n-key="user" type="text" name="user" id="user" placeholder="Usuario" required>
+                    </div>
+
+                    <div class="inputField">
+                        <label data-i18n-key="password" for="password">Constraseña</label>
+                        <input data-i18n-key="password" type="password" name="password" id="password" placeholder="Contraseña" required>
+                    </div>
+
+                    <button class="btn btn--accent" id="btn_login" type="submit">Log in</button>
+
+                    <a data-i18n-key="password-forgot" class="login__forgot" data-open="modal_contrasena">¿Olvidaste tu contraseña?</a>
+                </form>
+
+                
+            </div>
+            <div class="modal modal_login" id="modal_usuario" data-animation="slideInOutLeft">
+                <div class="modal-dialog">
+                  <section class="modal-content">
+                    <div class="card login__card">
+                        <div class="cabecera_user">
+                            <div class="btn-close">
+                                <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                                    ✕
+                                </button>
+                            </div>
+                            <div class="login__header_user">
+                                <img src="../assets/img/icons/user_two.png" alt="Usuario">
+                            </div>
+                        </div>
+                        <div class="header-title_user">
+                            <h3 data-i18n-key="user_data">DATOS DE USUARIO</h3>
+                        </div>
+                        <form class="login__form" id="login__form_user_data">
+                            
+        
+                           <div class="row">
+                                <div class="inputField col">
+                                    <label data-i18n-key="name" for="name">Nombre</label>
+                                    <input data-i18n-key="name" type="text" name="name_user_data" id="name_user_data" placeholder="Nombre" required>
+                                </div>
+        
+                                <div class="inputField col">
+                                    <label data-i18n-key="last_name" for="last_name">Apellidos</label>
+                                    <input data-i18n-key="last_name" type="text" name="last_name_user_data" id="last_name_user_data" placeholder="Apellidos" required>
+                                </div>
+        
+                                <div class="inputField" style="width: 100%!important;">
+                                    <label data-i18n-key="email" for="email">Correo</label>
+                                    <input data-i18n-key="email" type="email" name="email_user_data" id="email_user_data" placeholder="Correo" required>
+                                </div>
+            
+                                <div class="inputField">
+                                    <label data-i18n-key="phone" for="phone">Teléfono</label>
+                                    <input data-i18n-key="phone" type="number" minlength="10" name="phone_user_data" id="phone_user_data" placeholder="teléfono" required>
+                                </div>
+            
+                                <div class="inputField">
+                                    <label data-i18n-key="user" for="user">Usuario</label>
+                                    <input data-i18n-key="user" type="text" name="user_data" id="user_data" placeholder="Usuario" required>
+                                </div>
+            
+                                <div class="inputField">
+                                    <label data-i18n-key="password" for="password">Contraseña</label>
+                                    <input data-i18n-key="password" type="password" name="password_user_data" id="password_user_data" placeholder="Contraseña" required>
+                                    <img src="../assets/img/icons/eye.png" alt="password" class="icon" id="eye" title="Mostrar contraseña">
+                                </div>
+            
+                                <button data-i18n-key="save" class="btn btn--accent" id="submit_user" type="submit">Guardar</button>
+                                <input data-i18n-key="succesful" type="hidden" id="succesful" name="succesful">
+                                <div class="loader_exp" id="loader_user" style="display: none;"></div>
+                           </div>
+                        </form>
+                    </div>          
+                  </section>
+                </div>
+            </div>
+
+            <!--Forgot your password-->
+            <div class="modal modal_login" id="modal_contrasena" data-animation="slideInOutLeft">
+                <div class="modal-dialog">
+                <section class="modal-content">
+                    <div class="card login__card">
+                        <div class="cabecera_user">
+                            <div class="btn-close">
+                                <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                                    ✕
+                                </button>
+                            </div>
+                            <div class="login__header_user">
+                                <div class="password__icon">
+                                    <img class="password__img" src="../assets/img/icons/password_2.png" alt="Usuario">
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="header-title_user">
+                            <h3 data-i18n-key="forgot_password">¿OLVIDASTE TU CONTRASEÑA?</h3>
+                        </div>
+                        <form class="login__form" id="forgot_password_form">
+                            
+                        <h6 data-i18n-key="forgot_password_text">Ingresa tus datos y nos pondremos en contacto contigo.</h6>
+                        <div class="row">
+                            
+                                <div class="inputField">
+                                    <label data-i18n-key="name" for="name">Nombre</label>
+                                    <input data-i18n-key="name" type="text" name="name_recupera_password" id="name_recupera_password" placeholder="Nombre" required>
+                                </div>
+
+                                <div class="inputField">
+                                    <label data-i18n-key="last_name" for="last_name">Apellidos</label>
+                                    <input data-i18n-key="last_name" type="text" name="last_name_recupera_password" id="last_name_recupera_password" placeholder="Apellidos" required>
+                                </div>
+
+                                <div class="inputField">
+                                    <label data-i18n-key="phone" for="phone">Teléfono</label>
+                                    <input data-i18n-key="phone" type="number" name="phone_recupera_password" id="phone_recupera_password" placeholder="teléfono" min="111111111" max="9999999999" required>
+                                </div>
+
+                                <div class="inputField" style="width: 100%!important;">
+                                    <label data-i18n-key="email" for="email">Correo</label>
+                                    <input data-i18n-key="email" type="email" name="email_recupera_password" id="email_recupera_password" placeholder="Correo" required>
+                                </div>
+            
+                                <button data-i18n-key="send" class="btn btn--accent" id="submit_password" type="submit">Enviar</button>
+                                <div class="loader_exp" id="loader_forgot_password" style="display: none;"></div>
+                        </div>
+                        </form>
+                    </div>          
+                </section>
+                </div>
+                <div class="language__menu">
+                    <div class="language__control"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/language.js"></script>
+    <script src="scripts/modal_login.js"></script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/menu.css">
+    <link rel="stylesheet" href="../assets/css/modal_login.css">
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>-->
+    <script>
+        const $ = require("jquery");
+        const electron = require('electron');
+        const ipc = electron.ipcRenderer;
+        function maximizar(){
+            ipc.send("maximizar", "maximizar ventana");
+        }
+        function minimizar(){
+            ipc.send("minimizar", "minimizar ventana");
+        }
+        function cerrar(){
+            ipc.send("cerrar", "cerrar ventana");
+            localStorage.user = '';
+            localStorage.password = '';
+            localStorage.name = '';
+            localStorage.lastName = '';
+            localStorage.phone = '';
+            localStorage.email = '';
+        }
+
+        function closeSesion(){
+            localStorage.user = '';
+            localStorage.password = '';
+            localStorage.name = '';
+            localStorage.lastName = '';
+            localStorage.phone = '';
+            localStorage.email = '';
+            location.href = 'login.html';
+        }
+    </script>
+    <title>Zoé 360</title>
+</head>
+<body id="fondo_pantalla" class="body-menu">
+    <div class="language__menu">
+        <div class="language__control"></div>
+    </div>
+    <div class="title-bar-container">
+        <div class="title-bar"></div>
+        <div id="title-bar-btns">
+            <button class="min-btn" id="min-btn" onclick="minimizar()"> <img class="min-icon" src="../assets/img/icons/minimizar.png" alt="Minimizar"> </button>
+            <button class="max-btn" id="max-btn" onclick="maximizar()"> <img class="max-icon" src="../assets/img/icons/maximizar.png" alt="Maximizar"> </button>
+            <button class="close-btn" id="close-btn" onclick="cerrar()">  <img class="close-icon" src="../assets/img/icons/close.png" alt="Cerrar"> </button>
+        </div>
+    </div>
+
+    <div class="container-bar">
+        <!--<div class="topbar">
+            <div class="topbar__left">
+                <img class="topbar__img" src="../assets/img/logo.png" alt="logo-ZOE">
+                <h1 class="topbar__subtitle">360</h1>
+                <h2 data-i18n-key="menu-title" class="topbar__title">Menú de opciones</h2>
+            </div>
+            <nav class="topbar__nav">
+                <a class="topbar__nav-icon" data-open="modal_usuario" ><img src="../assets/img/icons/User.svg" alt="User"></a>
+                <a class="topbar__nav-icon configuration" onclick="goToSettingsWindow()"><img src="../assets/img/icons/Group.svg" alt="Configuration"></a>
+                <a id="close-app" class="topbar__nav-icon" href="#"><img src="../assets/img/icons/Vector.svg" alt="Close" onclick="closeSesion()"></a>
+            </nav>
+        </div>-->
+
+        <div class="side-bar">
+            <nav class="topbar__nav">
+                <div class="nav-group">
+                    <a class="topbar__nav-icon" data-open="modal_usuario" >
+                        <img src="../assets/img/icons/User.svg" alt="User">
+                    </a>
+                    <span data-i18n-key="user" class="tooltiptext">Usuario</span>
+                </div>
+                <div class="nav-group">
+                    <a class="topbar__nav-icon configuration" onclick="goToSettingsWindow()">
+                        <img src="../assets/img/icons/Group.svg" alt="Configuration">
+                    </a>
+                    <span data-i18n-key="configuration" class="tooltiptext">Configuración</span>
+                </div>
+                <div class="nav-group">
+                    <a id="close-app" class="topbar__nav-icon" href="#">
+                        <img src="../assets/img/icons/Vector.svg" alt="Close" onclick="closeSesion()">
+                    </a>
+                    <span data-i18n-key="logout" class="tooltiptext">Cerrar sesión</span>
+                </div>
+                <div class="indicator">
+                    >
+                </div>
+            </nav>
+            
+        </div>
+        
+        <!--<div class="dropdown">
+            <button class="dropbtn">Idioma</button>
+            <div class="dropdown-content">
+              <a>Español</p>
+              <a>English</a>
+            </div>
+        </div>-->
+    </div>
+
+    <!--<select class="select-menu" data-i18n-switcher class="locale-switcher">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+    </select>-->
+    
+    <span class="span-1"><span class="span-2"></span></span>
+
+    <div class="menu-container">
+        <div class="wrap">
+            <a id="zoe-exp" class="menu-link modules">
+                <div id="menu-rfc-exp" class="menu-rfc menu-rfc-exp">
+                    <h3 data-i18n-key="menu-rfc-title" id="titleExp" class="menu-rfc__title">Empresas</h3>
+                    <ul id="paginated-list" class="menu-rfc__list menu-1" aria-live="polite">
+
+                    </ul>
+                    <nav id="pagination-container" class="pagination-container pag1">
+                        <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+                          &lt;
+                        </button>
+                         
+                        <div id="pagination-numbers">
+                       
+                        </div>
+                         
+                        <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+                          &gt;
+                        </button>
+                    </nav>
+                </div>
+                <img src="../assets/img/LOGO_ZOE_EXP.png" alt="">
+            </a>
+            <a id="zoe-30" class="menu-link modules">
+                <div id="menu-rfc-a30" class="menu-rfc menu-rfc-a30">
+                    <h3 data-i18n-key="menu-rfc-title" id="titleA30" class="menu-rfc__title">Empresas</h3>
+                    <ul class="menu-rfc__list menu-2">
+
+                    </ul>
+                    <nav class="pagination-container pag2">
+                        <button class="pagination-button disabled" id="prev-button" title="Previous page" aria-label="Previous page" disabled="true">
+                            &lt;
+                        </button>
+                        <button class="pagination-button disabled" id="next-button" title="Next page" aria-label="Next page" disabled="true">
+                            &gt;
+                        </button>
+                    </nav>
+                </div>
+                <img src="../assets/img/LOGO_ZOE_A30.png" alt="">
+            </a>
+            <a id="anexo24" class="menu-link modules"><!--onclick="loadExplorer()-->              
+                <div id="menu-rfc-a24" class="menu-rfc menu-rfc-a24">
+                    <h3 data-i18n-key="menu-rfc-title" id="titleA24" class="menu-rfc__title">Empresas</h3>
+                    <ul class="menu-rfc__list menu-3">
+                        
+                    </ul>
+                    <nav class="pagination-container pag3">
+                        <button class="pagination-button disabled" id="prev-button" title="Previous page" aria-label="Previous page" disabled="true">
+                            &lt;
+                        </button>
+                        <button class="pagination-button disabled" id="next-button" title="Next page" aria-label="Next page" disabled="true">
+                            &gt;
+                        </button>
+                    </nav>
+                </div>
+                <img src="../assets/img/LOGO_ZOE_A24.png" alt="">          
+            </a>
+            <a class="menu-link" href="#"><img src="../assets/img/LOGO_ZOE_360_sin_modulos.png" alt=""></a>
+        </div>
+
+    </div>
+
+    <p data-i18n-key="version" class="version">Version 1.3</p>
+
+    <!--
+        <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+    -->
+
+      <div class="modal" id="modal_anexo_30" data-animation="slideInOutLeft">
+        <div class="modal-dialog">
+          <section class="modal-content">
+            <div class="card login__card">
+                <div class="cabecera">
+                    <div class="btn-close">
+                        <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                            ✕  
+                        </button>
+                    </div>
+                    <div class="login__header2">
+                        <img src="../assets/img/LOGO_ZOE_360_con_modulos.png" alt="">
+                    </div>
+                </div>
+                <div class="header-title">
+                    <h3>SIMULADOR ANEXO 30</h3>
+                    <h5 data-i18n-key="modal-credentials">INGRESA TUS CREDENCIALES</h5>
+                    <h6 id="message_error_anexo30"></h6>
+                </div>
+                <form class="login__form" id="login__form_anexo_30">
+                    <div class="inputField">
+                        <label data-i18n-key="user" for="user">Usuario</label>
+                        <input type="text" name="user_anexo30" id="user_anexo30" placeholder="User" required>
+                    </div>
+
+                    <div class="inputField">
+                        <label data-i18n-key="password" for="password">Contraseña</label>
+                        <input type="password" name="password_anexo30" id="password_anexo30" placeholder="Password" required>
+                        <input type="hidden" name="url_anexo30" id="url_anexo30">
+                    </div>
+
+                    <button class="btn btn--accent" id="submit_anexo" type="submit">Log in</button>
+                    <div class="loader_exp" id="loader_anexo" style="display: none;"></div>
+
+                    <a data-i18n-key="password-forgot" class="login__forgot" data-open="modal_contrasena" onclick="closeModal()">¿Olvidaste tu contraseña?</a>
+                </form>
+            </div>          
+          </section>
+        </div>
+      </div>
+
+      <div class="modal" id="modal_expedientes" data-animation="slideInOutLeft">
+        <div class="modal-dialog">
+          <section class="modal-content">
+            <div class="card login__card">
+                <div class="cabecera">
+                    <div class="btn-close">
+                        <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                            ✕
+                        </button>
+                    </div>
+                    <div class="login__header2">
+                        <img src="../assets/img/LOGO_ZOE_360_con_modulos.png" alt="">
+                    </div>
+                </div>
+                <div class="header-title">
+                    <h3>EXPEDIENTES DIGITALES</h3>
+                    <h5 data-i18n-key="modal-credentials">INGRESA TUS CREDENCIALES</h5>
+                    <h6 id="message_error_exp"></h6>
+                </div>
+                <form class="login__form" id="login__form_expedientes">
+                    <div class="inputField">
+                        <label data-i18n-key="user" for="user">Usuario</label>
+                        <input type="text" name="user_exp" id="user_exp" placeholder="Usuario" required>
+                    </div>
+
+                    <div class="inputField">
+                        <label data-i18n-key="password" for="password">Contraseña</label>
+                        <input type="password" name="password_exp" id="password_exp" placeholder="Contraseña" required>
+                        <input type="hidden" name="url_exp" id="url_exp">
+                    </div>
+
+                    <button class="btn btn--accent" id="submit_exp" type="submit">Log in</button>
+                    <div class="loader_exp" id="loader_exp" style="display: none;"></div>
+
+                    <a data-i18n-key="password-forgot" class="login__forgot" data-open="modal_contrasena" onclick="closeModal()">¿Olvidaste tu contraseña?</a>
+                </form>
+            </div>          
+          </section>
+        </div>
+      </div>
+
+      <!--Modal anexo 24-->
+      <div class="modal" id="modal_anexo_24" data-animation="slideInOutLeft">
+        <div class="modal-dialog">
+          <section class="modal-content">
+            <div class="card login__card">
+                <div class="cabecera">
+                    <div class="btn-close">
+                        <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                            ✕  
+                        </button>
+                    </div>
+                    <div class="login__header2">
+                        <img src="../assets/img/LOGO_ZOE_360_con_modulos.png" alt="">
+                    </div>
+                </div>
+                <div class="header-title">
+                    <h3>ANEXO 24</h3>
+                    <h5 data-i18n-key="modal-credentials">INGRESA TUS CREDENCIALES</h5>
+                    <h6 id="message_error_anexo_24"></h6>
+                </div>
+                
+                <form class="login__form" id="login__form_anexo24">
+                    <div class="inputField">
+                        <label data-i18n-key="user" for="user">Usuario</label>
+                        <input type="text" name="user_anexo24" id="user_anexo24" placeholder="User" required>
+                    </div>
+
+                    <div class="inputField">
+                        <label data-i18n-key="password" for="password">Contraseña</label>
+                        <input type="password" name="password_anexo24" id="password_anexo24" placeholder="Password" required>
+                        <input type="hidden" name="url_anexo24" id="url_anexo24">
+                        <input type="hidden" name="empresa_anexo24" id="empresa_anexo24">
+                        <input type="hidden" name="serverip_anexo24" id="serverip_anexo24">
+                    </div>
+
+                    <button class="btn btn--accent" id="submit_anexo" type="submit">Log in</button>
+                    <div class="loader_exp" id="loader_anexo" style="display: none;"></div>
+
+                    <a data-i18n-key="password-forgot" class="login__forgot" data-open="modal_contrasena" onclick="closeModal()">¿Olvidaste tu contraseña?</a>
+                </form>
+            </div>          
+          </section>
+        </div>
+      </div>
+      <!--fin modal anexo 24-->
+
+      <div class="modal" id="modal_usuario" data-animation="slideInOutLeft">
+        <div class="modal-dialog">
+          <section class="modal-content">
+            <div class="card login__card">
+                <div class="cabecera_user">
+                    <div class="btn-close">
+                        <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                            ✕
+                        </button>
+                    </div>
+                    <div class="login__header_user">
+                        <img class="user-icon" src="../assets/img/icons/user_two.png" alt="Usuario">
+                    </div>
+                </div>
+                <div class="header-title_user">
+                    <h3 data-i18n-key="user_data">DATOS DE USUARIO</h3>
+                </div>
+                <form class="login__form" id="login__form_user_data">
+                    
+
+                   <div class="row">
+                        <div class="inputField col">
+                            <label data-i18n-key="name" for="name">Nombre</label>
+                            <input data-i18n-key="name" type="text" name="name_user_data" id="name_user_data" placeholder="Nombre" required>
+                        </div>
+
+                        <div class="inputField col">
+                            <label data-i18n-key="last_name" for="last_name">Apellidos</label>
+                            <input data-i18n-key="last_name" type="text" name="last_name_user_data" id="last_name_user_data" placeholder="Apellidos" required>
+                        </div>
+
+                        <div class="inputField" style="width: 100%!important;">
+                            <label data-i18n-key="email" for="email">Correo</label>
+                            <input data-i18n-key="email" type="email" name="email_user_data" id="email_user_data" placeholder="Correo" required>
+                        </div>
+    
+                        <div class="inputField">
+                            <label data-i18n-key="phone" for="phone">Teléfono</label>
+                            <input data-i18n-key="phone" type="number" minlength="10" name="phone_user_data" id="phone_user_data" placeholder="teléfono" required>
+                        </div>
+    
+                        <div class="inputField">
+                            <label data-i18n-key="user" for="user">Usuario</label>
+                            <input data-i18n-key="user" type="text" name="user_data" id="user_data" placeholder="Usuario" required>
+                        </div>
+    
+                        <div class="inputField">
+                            <label data-i18n-key="password" for="password">Contraseña</label>
+                            <input data-i18n-key="password" type="password" name="password_user_data" id="password_user_data" placeholder="Contraseña" required>
+                            <img src="../assets/img/icons/eye.png" alt="password" class="icon" id="eye" title="Mostrar contraseña">
+                        </div>
+    
+                        <button data-i18n-key="save" class="btn btn--accent" id="submit_user" type="submit">Guardar</button>
+                        <input data-i18n-key="succesful" type="hidden" id="succesful" name="succesful">
+                        <div class="loader_exp" id="loader_user" style="display: none;"></div>
+                   </div>
+                </form>
+            </div>          
+          </section>
+        </div>
+      </div>
+
+      <!--Forgot your password-->
+      <div class="modal" id="modal_contrasena" data-animation="slideInOutLeft">
+        <div class="modal-dialog">
+          <section class="modal-content">
+            <div class="card login__card">
+                <div class="cabecera_user">
+                    <div class="btn-close">
+                        <button class="close-modal" aria-label="close modal" onclick="closeModal()" data-close>
+                            ✕
+                        </button>
+                    </div>
+                    <div class="login__header_user">
+                        <div class="password__icon">
+                            <img class="password__img" src="../assets/img/icons/password_2.png" alt="Usuario">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="header-title_user">
+                    <h3 data-i18n-key="forgot_password">¿OLVIDASTE TU CONTRASEÑA?</h3>
+                </div>
+                <form class="login__form" id="forgot_password_form">
+                    
+                   <h6 data-i18n-key="forgot_password_text">Ingresa tus datos y nos pondremos en contacto contigo.</h6>
+                   <div class="row">
+                    
+                        <div class="inputField">
+                            <label data-i18n-key="name" for="name">Nombre</label>
+                            <input data-i18n-key="name" type="text" name="name_recupera_password" id="name_recupera_password" placeholder="Nombre" required>
+                        </div>
+
+                        <div class="inputField">
+                            <label data-i18n-key="last_name" for="last_name">Apellidos</label>
+                            <input data-i18n-key="last_name" type="text" name="last_name_recupera_password" id="last_name_recupera_password" placeholder="Apellidos" required>
+                        </div>
+
+                        <div class="inputField">
+                            <label data-i18n-key="phone" for="phone">Teléfono</label>
+                            <input data-i18n-key="phone" type="number" name="phone_recupera_password" id="phone_recupera_password" placeholder="teléfono" min="111111111" max="9999999999" required>
+                        </div>
+
+                        <div class="inputField" style="width: 100%!important;">
+                            <label data-i18n-key="email" for="email">Correo</label>
+                            <input data-i18n-key="email" type="email" name="email_recupera_password" id="email_recupera_password" placeholder="Correo" required>
+                        </div>
+    
+                        <button data-i18n-key="send" class="btn btn--accent" id="submit_password" type="submit">Enviar</button>
+                        <div class="loader_exp" id="loader_forgot_password" style="display: none;"></div>
+                   </div>
+                </form>
+            </div>          
+          </section>
+        </div>
+      </div>
+        
+      <script src="scripts/menu.js"></script>
+      <script src="scripts/modal_login.js"></script>
+      <script src="scripts/language.js"></script>
+</body>
+</html>
