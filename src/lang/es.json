@@ -32,6 +32,8 @@
     "forgot_password_text": "Ingresa tus datos y nos pondremos en contacto contigo.",
     "name_complete": "Nombre completo",
     "send":"Enviar",
-    "logout":"Cerrar Sesión"
-    
+    "logout":"Cerrar Sesión",
+    "expDigitales":"Expedientes digitales",
+    "anexo30":"Anexo 30",
+    "anexo24":"Anexo 24"
 }

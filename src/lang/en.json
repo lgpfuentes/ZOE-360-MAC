@@ -32,5 +32,8 @@
     "forgot_password_text": "Enter your information and we will contact you.",
     "name_complete": "Full name",
     "send":"Send",
-    "logout":"Log out"
+    "logout":"Log out",
+    "expDigitales":"Digital Files",
+    "anexo30":"Annex 30 simulator",
+    "anexo24":"Annex 24 system"
 }

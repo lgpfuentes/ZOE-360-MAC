@@ -10,6 +10,10 @@ const dinamico = document.getElementById('dinamico');
 const sencillo = document.getElementById('sencillo');
 const currentTheme = localStorage.getItem("theme");
 
+if(!localStorage.getItem('lang')) {
+  localStorage.setItem('lang', 'es');
+}
+
 let savedLang = localStorage.getItem('lang')
 
 if(espanol && ingles){

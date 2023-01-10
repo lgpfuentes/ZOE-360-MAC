@@ -24,6 +24,14 @@ const pag3 = document.querySelector('.pag3');
 let fondo = document.getElementById('fondo_pantalla');
 localStorage.active = fondo;
 
+//IMAGENES MENÚ DEPENDIENDO EL IDIOMA
+//Inglés
+if(localStorage.getItem('lang') == 'en'){
+  $("#imgAnexo24").attr("src", "../assets/img/LOGO_ZOE_A24_INGLES.png").width(parseInt(343, 10)).height(160, 10);
+  $("#imganexo30").attr("src", "../assets/img/LOGO_ZOE_A30_INGLES.png").width(parseInt(200, 10)).height(349, 10);
+  $("#imgExp").attr("src", "../assets/img/LOGO_ZOE_EXP_INGLES-2.png").width(parseInt(264, 10)).height(254, 10);
+}
+
 function loadExplorer() {
     shell.openExternal(anexo24ruta);
 }

@@ -6,16 +6,16 @@
     --blue: #5572FF;
     --dark-blue: #1A2650;
     --gray: #A6A6A6;*/
-    --bg-color: #d6deff;
-    --bg-color2: #ffffff;
-    --primary-color: #1A2650;
+    --bg-color: linear-gradient(45deg, rgba(207,215,255,1) 0%, rgba(128,132,230,1) 36%, rgba(131,128,222,1) 71%, rgba(39,36,150,1) 100%);
+    --bg-color2: #fff;
+    --primary-color: #4865f5;
     --secondary-color: #1A2650;
-    --font-color1: #101833;
+    --font-color1: #6b8cf8;
     --font-color2: #101833;
-    --heading-color:#D4DBF9;
+    --heading-color: #D4DBF9;
     --heading-color2: linear-gradient(90deg, rgba(174,196,226,1) 71%, rgba(87,95,132,1) 100%);
     --border: #A6A6A6;    
-    --top-icons: invert(15%) sepia(10%) saturate(6926%) hue-rotate(202deg) brightness(82%) contrast(96%);
+    --top-icons: invert(85%) sepia(20%) saturate(377%) hue-rotate(195deg) brightness(99%) contrast(97%);
 }
 
 html[data-theme="dark"] {
@@ -112,6 +112,9 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size:cover;
     top: 0px;
     left: 0px;
     position: fixed;
