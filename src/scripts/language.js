@@ -10,11 +10,25 @@ const dinamico = document.getElementById('dinamico');
 const sencillo = document.getElementById('sencillo');
 const currentTheme = localStorage.getItem("theme");
 
-if(!localStorage.getItem('lang')) {
+let savedLang = localStorage.getItem('lang')
+
+if(!savedLang){
   localStorage.setItem('lang', 'es');
+}else{
+  if(savedLang == 'en'){
+    localStorage.urlExpDigital = '../assets/img/LOGO_ZOE_EXP_INGLES-2.png';
+    localStorage.urlAnexo30 = '../assets/img/LOGO_ZOE_A30_INGLES.png';    
+    localStorage.urlAnexo24 = '../assets/img/LOGO_ZOE_A24_INGLES.png';
+  }
+  if(savedLang == 'es'){
+    localStorage.urlExpDigital = '../assets/img/LOGO_ZOE_EXP.png';
+    localStorage.urlAnexo30 = '../assets/img/LOGO_ZOE_A30.png';
+    localStorage.urlAnexo24 = '../assets/img/LOGO_ZOE_A24.png';
+  }
 }
 
-let savedLang = localStorage.getItem('lang')
+
+
 
 if(espanol && ingles){
   if(savedLang === 'en'){
@@ -114,16 +128,35 @@ function bindLocaleSwitcher(initialValue) {
       e.addEventListener("click", (event) => {
           setLocale(event.target.value);
           localStorage.setItem('lang', event.target.value);
+          if(event.target.value === 'en'){
+            localStorage.setItem("urlExpDigital","../assets/img/LOGO_ZOE_EXP_INGLES-2.png");
+            localStorage.setItem("urlAnexo30","../assets/img/LOGO_ZOE_A30_INGLES.png");
+            localStorage.setItem("urlAnexo24","../assets/img/LOGO_ZOE_A24_INGLES.png");
+          }
+          if(event.target.value === 'es'){
+            localStorage.setItem("urlExpDigital","../assets/img/LOGO_ZOE_EXP.png");
+            localStorage.setItem("urlAnexo30","../assets/img/LOGO_ZOE_A30.png");
+            localStorage.setItem("urlAnexo24","../assets/img/LOGO_ZOE_A24.png");
+          }
           langControl.forEach(lang => {
-            lang.classList.remove("active-lang")
+            lang.classList.remove("active-lang");
           });
           e.classList.add("active-lang");
           ipc3.send('reloadWindow'); 
-      })
-    })
+      });
+    });
 
     switcher.onchange = (e) => {
-      //console.log(e.target.value);
+      if(e.target.value === 'en'){
+        localStorage.setItem("urlExpDigital","../assets/img/LOGO_ZOE_EXP_INGLES-2.png");
+        localStorage.setItem("urlAnexo30","../assets/img/LOGO_ZOE_A30_INGLES.png");
+        localStorage.setItem("urlAnexo24","../assets/img/LOGO_ZOE_A24_INGLES.png");
+      }
+      if(e.target.value === 'es'){
+        localStorage.setItem("urlExpDigital","../assets/img/LOGO_ZOE_EXP.png");
+        localStorage.setItem("urlAnexo30","../assets/img/LOGO_ZOE_A30.png");
+        localStorage.setItem("urlAnexo24","../assets/img/LOGO_ZOE_A24.png");
+      }
 
       setLocale(e.target.value);
       localStorage.setItem('lang', e.target.value);
@@ -131,8 +164,6 @@ function bindLocaleSwitcher(initialValue) {
   }
 
 }
-
-
 
 if (currentTheme) {
   document.documentElement.setAttribute("data-theme", currentTheme);

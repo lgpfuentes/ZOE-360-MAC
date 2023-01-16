@@ -355,6 +355,14 @@ button {
     filter: var(--top-icons);
 }
 
+.topbar-menu {
+    position: absolute;
+    padding: 5px;
+    width: 75%;
+    height: 30px;
+    -webkit-app-region: drag;
+}
+
 .swal-button {
     padding: 7px 19px;
     border-radius: 2px;

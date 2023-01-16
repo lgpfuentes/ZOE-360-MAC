@@ -1,18 +1,52 @@
 body {
     overflow: hidden;
-    /*-webkit-app-region: drag;*/
-    user-select: none;
     cursor: pointer;
+    user-select: none;
+    /*background: var(--bg-color);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95px;
 }
 
 .boton-360 {
     width: 100px;
     margin-top: 1rem;
+    cursor: pointer;
+    /*-webkit-user-select: none;
+    user-select: none;*/
 }
 
 .boton-360:active {
     transform: translateY(4px);
 }
+
+.img_btn360{
+    width: 100%;
+    height: auto;
+}
+
+.btnClose {
+    visibility: hidden;
+    position: absolute;
+    font-size: 14px;
+    top: 0;
+    right: 7px;
+    border-radius: 50%;
+    width: 20px;
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.boton-360:hover .btnClose {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 /*.vert-move {
     -webkit-animation: mover 1s infinite  alternate;

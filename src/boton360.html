@@ -7,22 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/boton360.css">
     <link rel="stylesheet" href="../assets/css/main.css">
-    <title>Botón 360</title>
+    <title>360</title>
     <script>
         const electron = require('electron');
         const ipc = electron.ipcRenderer;
         function restore(){
             ipc.send("restore", "restaurar ventana");
         }
+
+        function cerrar360(){
+            ipc.send("cerrar360", "cerrar ventana");
+        }
     </script>
 </head>
 
-<script>    
-    
-</script>
 <body>    
     <div class="boton-360" id="btnRestore">
-        <img src="../assets/img/LOGO_ZOE_360_con_modulos.png" alt="botón 360" onclick="restore()">        
+        <img src="../assets/img/LOGO_ZOE_360_con_modulos.png" class="img_btn360" alt="botón 360" onclick="restore()">
+        <p class="btnClose" onclick="cerrar360()">&#10006;</p>        
     </div>
 </body>
 </html>

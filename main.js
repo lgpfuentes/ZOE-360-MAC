@@ -7,10 +7,10 @@ const url = require('url');
 const shell = require('electron').shell
 const env = process.env.NODE_ENV || 'development';
 const { Menu } = require('electron');
-Menu.setApplicationMenu(null);
+//Menu.setApplicationMenu(null);
 var ipc = require('electron').ipcMain;
 const WindowPosition = require( 'electron-window-position');
-//require('electron-reload')(__dirname);
+require('electron-reload')(__dirname);
 
 let mainWindow = null;
 let childWindow = null;
@@ -37,7 +37,7 @@ const createWindow = () => {
   mainWindow.loadFile('src/login.html');
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
   
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
@@ -62,7 +62,6 @@ const createWindow = () => {
     });
   
     childWindow.loadFile("src/config_language.html");
-
     //childWindow.webContents.openDevTools()
     
     childWindow.once("ready-to-show", () => {
@@ -102,12 +101,12 @@ const createWindow = () => {
     var pos = position.display.bounds.width;
     var posy = position.display.bounds.height;
     toolbarWindow = new BrowserWindow({
-        width: 150,
-        height: 200,
+        width: 105,
+        height: 105,
         x:pos - 150, 
         y:posy - 200,
-        minHeight:150, maxHeight:150,
-        minWidth:200, maxWidth:200,
+        minHeight:105, maxHeight:105,
+        minWidth:105, maxWidth:105,
         resize: true,
         type: 'toolbar',
         alwaysOnTop: true,
@@ -136,7 +135,7 @@ const createWindow = () => {
   };
 
   mainWindow.on('minimize', onCloseMainWindow);
-  mainWindow.on ('blur', () => { mainWindow.minimize(); });
+  //mainWindow.on ('blur', () => { mainWindow.minimize(); });
   
 
   // Open urls in the user's browser
@@ -216,16 +215,33 @@ ipcMain.on('cerrar', () => {
 ipcMain.on('cerrarConfig', () => { 
   childWindow.close();
 });
+ipcMain.on('cerrar360', () => { 
+  toolbarWindow.close();
+});
 
 ipcMain.on('close-me', (evt, arg) => {
   // close our app!
    app.quit();
 });
 
-// Abrir la ruta de anexo 24
-/*ipcMain.handle("loadExplorer", () => {
-  shell.openExternal("file://c:/Program Files/WinRAR/WinRAR.exe");
-});*/
+var template = [{
+    label: app.name,
+    submenu: [
+        { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+    ]}, {
+    label: "Edit",
+    submenu: [
+        { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+        { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+        { type: "separator" },
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+    ]}
+];
+
+Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
 // Proceso para cerrar la app
 /*ipcMain.handle('quit-app', () => {
