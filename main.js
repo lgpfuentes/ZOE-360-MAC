@@ -10,7 +10,7 @@ const { Menu } = require('electron');
 //Menu.setApplicationMenu(null);
 var ipc = require('electron').ipcMain;
 const WindowPosition = require( 'electron-window-position');
-require('electron-reload')(__dirname);
+// require('electron-reload')(__dirname);
 
 let mainWindow = null;
 let childWindow = null;
