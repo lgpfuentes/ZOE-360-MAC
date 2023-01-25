@@ -209,23 +209,21 @@
                         <label data-i18n-key="user" for="user">Usuario</label>
                         <input data-i18n-key="user" type="text" name="user_anexo30" id="user_anexo30" placeholder="User" required>
                     </div>
-
                     <div class="inputField">
                         <label data-i18n-key="password" for="password">Contraseña</label>
-                        <input data-i18n-key="password" type="password" name="password_anexo30" id="password_anexo30" placeholder="Password" required>
+                        <input type="password" name="password_anexo30" id="password_anexo30" placeholder="Password" required>
+                        <img src="../assets/img/icons/eye.png" alt="password" class="ojo_anexo30" id="eye_anexo30" title="Mostrar contraseña">
                         <input type="hidden" name="url_anexo30" id="url_anexo30">
+                        <input type="hidden" name="modal_name_a30" id="modal_name_a30">
                     </div>
-
                     <button class="btn btn--accent" id="submit_anexo" type="submit">Log in</button>
                     <div class="loader_exp" id="loader_anexo" style="display: none;"></div>
-
                     <a data-i18n-key="password-forgot" class="login__forgot" data-open="modal_contrasena" onclick="closeModal()">¿Olvidaste tu contraseña?</a>
                 </form>
             </div>          
           </section>
         </div>
       </div>
-
       <div class="modal" id="modal_expedientes" data-animation="slideInOutLeft">
         <div class="modal-dialog modal__card">
           <section class="modal-content">
@@ -250,13 +248,13 @@
                         <label data-i18n-key="user" for="user">Usuario</label>
                         <input data-i18n-key="user" type="text" name="user_exp" id="user_exp" placeholder="Usuario" required>
                     </div>
-
                     <div class="inputField">
                         <label data-i18n-key="password" for="password">Contraseña</label>
                         <input data-i18n-key="password" type="password" name="password_exp" id="password_exp" placeholder="Contraseña" required>
+                        <img src="../assets/img/icons/eye.png" alt="password" class="ojo_exp" id="eye_exp" title="Mostrar contraseña">
                         <input type="hidden" name="url_exp" id="url_exp">
+                        <input type="hidden" name="modal_name_exp" id="modal_name_exp">
                     </div>
-
                     <button class="btn btn--accent" id="submit_exp" type="submit">Log in</button>
                     <div class="loader_exp" id="loader_exp" style="display: none;"></div>
 
@@ -295,8 +293,9 @@
                     </div>
 
                     <div class="inputField">
-                        <label data-i18n-key="password" for="password">Contraseña</label>
-                        <input type="password" name="password_anexo24" id="password_anexo24" placeholder="Password" required>
+                        <label data-i18n-key="password" for="password">Contraseña</label> 
+                        <input data-i18n-key="password" name="password_anexo24" id="password_anexo24" placeholder="Password" required>
+                        <img src="../assets/img/icons/eye.png" alt="password" class="ojo_anexo24" id="eye_anexo24" title="Mostrar contraseña">
                         <input type="hidden" name="url_anexo24" id="url_anexo24">
                         <input type="hidden" name="empresa_anexo24" id="empresa_anexo24">
                         <input type="hidden" name="serverip_anexo24" id="serverip_anexo24">
