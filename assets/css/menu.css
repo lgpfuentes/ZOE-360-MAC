@@ -234,7 +234,6 @@
 .menu-link img:nth-child(3) {
     transition: transform .4s .25s, opacity .5s;
 }
-
 /*.toanimate*/
 /*.toanimate {
     -webkit-backface-visibility: visible;
@@ -310,8 +309,7 @@
     animation-timing-function: ease-in;
     }
     } 
-
-
+*/
 
 /*#bg {
     position: absolute;

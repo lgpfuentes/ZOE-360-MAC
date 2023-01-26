@@ -3,7 +3,13 @@ const openEls = document.querySelectorAll("[data-open]");
 const closeEls = document.querySelectorAll("[data-close]");
 const isVisible = "is-visible";
 var eye = document.getElementById("eye");
+var eye_anexo24 = document.getElementById("eye_anexo24");
+var eye_anexo30 = document.getElementById("eye_anexo30");
+var eye_exp = document.getElementById("eye_exp");
 var input_pass = document.getElementById("password_user_data");
+var input_pass_anexo24 = document.getElementById("password_anexo24");
+var input_pass_anexo30 = document.getElementById("password_anexo30");
+var input_pass_exp = document.getElementById("password_exp");
 const swal = require('sweetalert');
 const nodemailer = require("nodemailer");
 var lenguage = localStorage.getItem('lang');
@@ -22,18 +28,62 @@ const sql = require('mssql');
     User: SUPERVISOR
     Password: Pa$$w0rd$1
     */
-eye.addEventListener("click", function(){
-  if(input_pass.type == "password"){
-    input_pass.type = "text";
-    eye.style.opacity = 0.8;
-    eye.title = "Ocultar contraseña";
-  }else{
-    input_pass.type = "password";
-    eye.style.opacity = 0.2;
-    eye.title = "Mostrar contraseña";
-  }
-});
-
+    if(eye){
+      eye.addEventListener("click", function(){
+        if(input_pass.type == "password"){
+          input_pass.type = "text";
+          eye.style.opacity = 0.8;
+          eye.title = "Ocultar contraseña";
+        }else{
+          input_pass.type = "password";
+          eye.style.opacity = 0.2;
+          eye.title = "Mostrar contraseña";
+        }
+      });
+    }
+    
+    if(eye_anexo24){
+      eye_anexo24.addEventListener("click", function(){
+        if(input_pass_anexo24.type == "password"){
+          input_pass_anexo24.type = "text";
+          eye_anexo24.style.opacity = 0.8;
+          eye_anexo24.title = "Ocultar contraseña";
+        }else{
+          input_pass_anexo24.type = "password";
+          eye_anexo24.style.opacity = 0.2;
+          eye_anexo24.title = "Mostrar contraseña";
+        }
+      });
+    }
+    
+    if(eye_anexo30){
+      eye_anexo30.addEventListener("click", function(){
+        if(input_pass_anexo30.type == "password"){
+          input_pass_anexo30.type = "text";
+          eye_anexo30.style.opacity = 0.8;
+          eye_anexo30.title = "Ocultar contraseña";
+        }else{
+          input_pass_anexo30.type = "password";
+          eye_anexo30.style.opacity = 0.2;
+          eye_anexo30.title = "Mostrar contraseña";
+        }
+      });
+    }
+    
+    if (eye_exp) {
+      eye_exp.addEventListener("click", function(){
+        if(input_pass_exp.type == "password"){
+          input_pass_exp.type = "text";
+          eye_exp.style.opacity = 0.8;
+          eye_exp.title = "Ocultar contraseña";
+        }else{
+          input_pass_exp.type = "password";
+          eye_exp.style.opacity = 0.2;
+          eye_exp.title = "Mostrar contraseña";
+        }
+      });
+    }
+    
 
 for (const el of openEls) {
 

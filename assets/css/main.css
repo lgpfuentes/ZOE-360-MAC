@@ -17,10 +17,11 @@
     --light-heading-color: #e2e7fa;
     --border: #A6A6A6;    
     --top-icons: invert(85%) sepia(20%) saturate(377%) hue-rotate(195deg) brightness(99%) contrast(97%);
+    --card-bg: white;
 }
 
 html[data-theme="dark"] {
-    --primary-color: #101833;
+    --primary-color: #6877a8;
     --secondary-color: #101833;
     --font-color1: #D4DBF9;
     --font-color2: #D4DBF9;
@@ -39,9 +40,10 @@ html[data-theme="dinamico"] {
     --bg-color2: #fff;
     --primary-color: #4865f5;
     --secondary-color: #1A2650;
-    --font-color1: #6b8cf8;
+    --font-color1: #636f96;
     --font-color2: #101833;
     --heading-color: #D4DBF9;
+    --light-heading-color: #e2e7fa;
     --heading-color2: linear-gradient(90deg, rgba(174,196,226,1) 71%, rgba(87,95,132,1) 100%);
     --light-heading-color: #e2e7fa;
     --border: #A6A6A6;    
@@ -52,7 +54,7 @@ html[data-theme="dinamico"] {
 html[data-theme="sencillo"] {
     --bg-color: rgba(128,132,230,1);
     --bg-color2: #ffffff;
-    --primary-color: #1A2650;
+    --primary-color: rgba(128,132,230,1);
     --secondary-color: #1A2650;
     --font-color1: #6b8cf8;
     --font-color2: #101833;
@@ -119,9 +121,6 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size:cover;
     top: 0px;
     left: 0px;
     position: fixed;
@@ -363,6 +362,17 @@ button {
     filter: var(--top-icons);
 }
 
+.swal-button {
+    padding: 7px 12px;
+    border-radius: 2px;
+    background-color: #1A2650;
+    font-size: 12px;
+    border: 1px solid #1A2650;
+    text-shadow: black;
+    color: white;
+    margin-block: 12px;
+}
+
 .topbar-menu {
     position: absolute;
     padding: 5px;
@@ -370,12 +380,33 @@ button {
     height: 30px;
     -webkit-app-region: drag;
 }
-
-.swal-button {
-    padding: 7px 19px;
-    border-radius: 2px;
-    background-color: #1A2650;
-    font-size: 12px;
-    border: 1px solid #1A2650;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+.ojo_anexo24{
+    position: absolute;
+    top: 77%;
+    right: 30px;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.ojo_anexo30{
+    position: absolute;
+    top: 76.5%;
+    right: 30px;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.ojo_exp{
+    position: absolute;
+    top: 76.5%;
+    right: 30px;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
 }

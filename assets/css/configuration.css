@@ -54,6 +54,7 @@ body {
 .main {
     margin-left: 240px; /* Same as the width of the sidebar */
     padding: 2rem 2rem;
+    padding: 2rem 2rem;
     font-size: 14px;
     color: var(--font-color2);
 }
@@ -236,6 +237,6 @@ body {
 }
 
 .mail {
-    color: var(--font-color1);
+    color: var(--font-color3);
     text-decoration: underline;
 }
