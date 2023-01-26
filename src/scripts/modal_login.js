@@ -36,35 +36,57 @@ eye.addEventListener("click", function(){
 
 
 for (const el of openEls) {
+
   el.addEventListener("click", function() {
+    
     const modalId = this.dataset.open;
     const url = $(this).attr("data");
     const serverip = $(this).attr("data-ip");
-    document.getElementById(modalId).classList.add(isVisible);
+    //document.getElementById("submit_exp").style = 'display: block;';
+    //document.getElementById("loader_exp").style = 'display:none;'; 
+    //document.getElementById(modalId).classList.add(isVisible);
     if(modalId == "modal_anexo_30"){
+      document.getElementById("loader_anexo").style = 'display:block;';
+      document.getElementById("overlay-a30").classList.add('blur');
       $("#user_anexo30").val(localStorage.user);
       $("#password_anexo30").val(localStorage.password);
       $("#url_anexo30").val(url);
+      $("#modal_name_a30").val(modalId);
       $("#login__form_anexo_30").submit();
     }
     if(modalId == "modal_expedientes"){
+      document.getElementById("loader_exp").style = 'display:block;';
+      document.getElementById("overlay-exp").classList.add('blur');
       $("#user_exp").val(localStorage.user);
       $("#password_exp").val(localStorage.password);
       $("#url_exp").val(url);
+      $("#modal_name_exp").val(modalId);
       $("#login__form_expedientes").submit();
     }
     if(modalId == "modal_anexo_24"){
+      document.getElementById("submit_exp").style = 'display: block;';
+      document.getElementById("loader_exp").style = 'display:none;'; 
+      //document.getElementById(modalId).classList.add(isVisible);
       var empresaSelected = $(this)[0].outerText;
       $("#serverip_anexo24").val(serverip);
       $("#user_anexo24").val(localStorage.user);
       $("#password_anexo24").val(localStorage.password);
       $("#url_anexo24").val(url);
+      $("#modal_name_a24").val(modalId);
       $("#empresa_anexo24").val(empresaSelected);
-      //$("#login__form_anexo24").submit();
+      $("#contador_anexo24").html(localStorage.contador ? localStorage.contador : '0');
+      if(!localStorage.contador || localStorage.contador < 3){
+        $("#login__form_anexo24").submit();
+      }else{
+        $("#message_limite_intentos").text(lenguage == 'en' ? "You have reached the limit of attempts. Close the 360 ​​menu and try again." : "Alcanzaste el límite de intentos. Cierra el menú 360 y vuelve a intentarlo.").css("color", "red");
+        $("#submit_anexo_24").prop('disabled', true);
+      }
     }
     if(modalId == "modal_usuario"){
+      document.getElementById(modalId).classList.add(isVisible);
       localStorage.user ? $("#user_data").val(localStorage.user) : $("#user_data").val("");
       localStorage.password ? $("#password_user_data").val(localStorage.password) : $("#password_user_data").val("");
+      localStorage.password ? $("#password").val(localStorage.password) : $("#password").val("");
       localStorage.name ? $("#name_user_data").val(localStorage.name) : $("#name_user_data").val("");
       localStorage.lastName ? $("#last_name_user_data").val(localStorage.lastName) : $("#last_name_user_data").val("");
       localStorage.phone ? $("#phone_user_data").val(localStorage.phone) : $("#phone_user_data").val("");
@@ -110,62 +132,20 @@ function closeModal(){
     $("#message_error_exp").text("");
 };
 
-$("#login__form_anexo_30").on( "submit", function( event ) {
-    event.preventDefault();
-    document.getElementById("submit_anexo").style = 'display: none;';
-    document.getElementById("loader_anexo").style = 'display:block;';
-    var user = $("#user_anexo30").val();
-    var password = $("#password_anexo30").val();
-    var urlSelected = $("#url_anexo30").val();
-    let url = `${urlSelected}/api/Usuario/Login2/?USER=${user}&PASS=${password}`;
-    let urlmysccyg = `${urlSelected}/api/Usuario/Login360/?USER=${user}&PASS=${password}`;
-
-    const api = new XMLHttpRequest();
-    api.open('GET', url, true);
-    api.send();
-
-    api.onreadystatechange = function(){
-        if(this.status == 200 && this.readyState == 4){
-            let datos = JSON.parse(this.response);
-            if(datos[13] === "f"){
-              if(lenguage == 'en'){
-                $("#message_error_anexo30").text("INCORRECT ACCESS DATA").css("color", "red");
-              }
-              if(lenguage == 'es'){                
-                $("#message_error_anexo30").text("DATOS DE ACCESO INCORRECTOS").css("color", "red"); 
-              }    
-                document.getElementById("submit_anexo").style = 'display: block;';
-                document.getElementById("loader_anexo").style = 'display:none;';            
-            }else if(datos[13] === "t"){
-                $("#message_error_anexo30").text("");
-                api.open('GET', urlmysccyg, true);
-                api.send();
-                api.onreadystatechange = function(){
-                    if(this.status == 200 && this.readyState == 4){
-                      window.open(urlmysccyg, '_blank');
-                      document.getElementById("submit_anexo").style = 'display: block;';
-                      document.getElementById("loader_anexo").style = 'display:none;'; 
-                      closeModal(); 
-                      localStorage.user = user;
-                      localStorage.password = password;
-                    }
-                }
-            }
-            $("#login__form_anexo_30").trigger("reset");
-        }
-    }
-
-});
-
 $("#login__form_expedientes").on( "submit", function( event ) {
   event.preventDefault();
   document.getElementById("submit_exp").style = 'display: none;';
   document.getElementById("loader_exp").style = 'display:block;';
+  
+  var modalId = $("#modal_name_exp").val();
+  console.log(modalId)
   var user = $("#user_exp").val();
   var password = $("#password_exp").val();
   var urlSelected = $("#url_exp").val();
   let url = `${urlSelected}/api/Usuario/Login2/?USER=${user}&PASS=${password}`;
   let urlAnya = `${urlSelected}/api/Usuario/Login360/?USER=${user}&PASS=${password}`;
+
+  var submit = document.getElementById("submit_exp");
 
   const api = new XMLHttpRequest();
   api.open('GET', url, true);
@@ -175,14 +155,11 @@ $("#login__form_expedientes").on( "submit", function( event ) {
       if(this.status == 200 && this.readyState == 4){
           let datos = JSON.parse(this.response) 
           if(datos[13] === "f"){
-              if(lenguage == 'en'){
-                $("#message_error_exp").text("INCORRECT ACCESS DATA").css("color", "red");
-              }
-              if(lenguage == 'es'){
-                $("#message_error_exp").text("DATOS DE ACCESO INCORRECTOS").css("color", "red");
-              }               
-              document.getElementById("submit_exp").style = 'display: block;';
-              document.getElementById("loader_exp").style = 'display:none;';               
+              $("#message_error_exp").text(lenguage == 'en' ? "INCORRECT ACCESS DATA" : "DATOS DE ACCESO INCORRECTOS").css("color", "red");               
+              submit.style = 'display: block;';
+              document.getElementById("loader_exp").style = 'display:none;'; 
+              document.getElementById("overlay-exp").classList.remove('blur');
+              document.getElementById(modalId).classList.add(isVisible); 
           }else if(datos[13] === "t"){
               $("#message_error_exp").text("");
               api.open('GET', urlAnya, true);
@@ -192,7 +169,8 @@ $("#login__form_expedientes").on( "submit", function( event ) {
                       window.open(urlAnya, '_blank');
                       document.getElementById("submit_exp").style = 'display: block;';
                       document.getElementById("loader_exp").style = 'display:none;'; 
-                      closeModal();
+                      document.getElementById("overlay-exp").classList.remove('blur');
+                      //closeModal();
                       localStorage.user = user;
                       localStorage.password = password;
                     }
@@ -203,10 +181,57 @@ $("#login__form_expedientes").on( "submit", function( event ) {
   }
 });
 
+$("#login__form_anexo_30").on( "submit", {}, function( event ) {
+  event.preventDefault();
+  document.getElementById("submit_anexo").style = 'display: none;';
+  document.getElementById("loader_anexo").style = 'display:block;';
+  var modalIda30 = $("#modal_name_a30").val();
+  console.log(modalIda30)
+  var user = $("#user_anexo30").val();
+  var password = $("#password_anexo30").val();
+  var urlSelected = $("#url_anexo30").val();
+  let url = `${urlSelected}/api/Usuario/Login2/?USER=${user}&PASS=${password}`;
+  let urlmysccyg = `${urlSelected}/api/Usuario/Login360/?USER=${user}&PASS=${password}`;
+
+  const api = new XMLHttpRequest();
+  api.open('GET', url, true);
+  api.send();
+
+  api.onreadystatechange = function(){
+      if(this.status == 200 && this.readyState == 4){
+          let datos = JSON.parse(this.response);
+          if(datos[13] === "f"){ 
+            $("#message_error_anexo30").text(lenguage == 'en' ? "INCORRECT ACCESS DATA" : "DATOS DE ACCESO INCORRECTOS").css("color", "red"); 
+            document.getElementById("submit_anexo").style = 'display: block;';
+            document.getElementById("loader_anexo").style = 'display:none;'; 
+            document.getElementById("overlay-a30").classList.remove('blur');
+            document.getElementById(modalIda30).classList.add(isVisible);                
+          }else if(datos[13] === "t"){
+              $("#message_error_anexo30").text("");
+              api.open('GET', urlmysccyg, true);
+              api.send();
+              api.onreadystatechange = function(){
+                  if(this.status == 200 && this.readyState == 4){
+                    window.open(urlmysccyg, '_blank');
+                    document.getElementById("submit_anexo").style = 'display: block;';
+                    document.getElementById("loader_anexo").style = 'display:none;'; 
+                    document.getElementById("overlay-a30").classList.remove('blur');
+                    closeModal(); 
+                    localStorage.user = user;
+                    localStorage.password = password;
+                  }
+              }
+          }
+          $("#login__form_anexo_30").trigger("reset");
+      }
+  }
+
+});
+
 $("#login__form_anexo24").on( "submit", function( event ) {
   event.preventDefault();
-  //document.getElementById("submit_exp").style = 'display: none;';
-  //document.getElementById("loader_exp").style = 'display:block;';
+  document.getElementById("submit_anexo_24").style = 'display: none;';
+  document.getElementById("loader_anexo24").style = 'display:block;';
   var user = $("#user_anexo24").val();
   var password = $("#password_anexo24").val();
   var path = $("#url_anexo24").val();

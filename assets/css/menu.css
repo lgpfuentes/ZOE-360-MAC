@@ -236,7 +236,7 @@
 }
 
 /*.toanimate*/
-.toanimate {
+/*.toanimate {
     -webkit-backface-visibility: visible;
     backface-visibility: visible;
     -webkit-animation-name: flip;
@@ -352,6 +352,19 @@
     z-index: 9999;
 }
 
+.menu-rfc .loader {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.blur {
+   opacity: 0.1;
+}
+
 .empty {
     height: auto;
 }
@@ -411,6 +424,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    padding: 1rem;
 }
 
 /*--- Paginacion ---*/
@@ -589,4 +603,51 @@ section .wave.wave4 {
 .nav-group:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+/*---- Fade In Animation ----*/
+
+.invisible {
+    opacity: 0;
+    -webkit-animation: fading ease-in 1s;
+    animation: fading ease-in 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.invisible.one {
+    /*transform: translateZ(0px) scale(1.1);*/
+    animation-delay: 0.5s;
+}
+
+.invisible.two {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s
+}
+
+.invisible.three {
+    -webkit-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+}
+
+
+@keyframes fading {
+    from {
+        opacity: 0;
+    }
+    to {
+         opacity: 1;   
+    }
+}
+.ojo_login{
+    position: absolute;
+    top: 67%;
+    right: 30px;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
 }

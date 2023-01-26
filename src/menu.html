@@ -113,46 +113,51 @@
 
     <div  class="menu-container">
         <div class="wrap" id="wrap">
-            <a id="zoe-exp" class="menu-link modules toanimate">
+            <a id="zoe-exp" class="menu-link modules invisible one">
                 <div id="menu-rfc-exp" class="menu-rfc menu-rfc-exp">
-                    <h3 data-i18n-key="menu-rfc-title" id="titleExp" class="menu-rfc__title">Empresas</h3>
-                    <ul id="paginated-list" class="menu-rfc__list menu-1" aria-live="polite">
+                    <div class="loader loader_exp" id="loader_exp" style="display: none;"></div>
+                    <div id="overlay-exp">
+                        <h3 data-i18n-key="menu-rfc-title" id="titleExp" class="menu-rfc__title">Empresas</h3>
+                        <ul id="paginated-list" class="menu-rfc__list menu-1" aria-live="polite">
 
-                    </ul>
-                    <nav id="pagination-container" class="pagination-container pag1">
-                        <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
-                          &lt;
-                        </button>
-                         
-                        <div id="pagination-numbers">
-                       
-                        </div>
-                         
-                        <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
-                          &gt;
-                        </button>
-                    </nav>
+                        </ul>
+                        <nav id="pagination-container" class="pagination-container pag1">
+                            <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+                            &lt;
+                            </button>
+
+                            <div id="pagination-numbers">
+
+                            </div>
+
+                            <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">      
+                            &gt;
+                            </button>
+                        </nav>
+                    </div>
                 </div>
                 <img id="imgExp" src="" alt="">
             </a>
-            <a id="zoe-30" class="menu-link modules toanimate">
+            <a id="zoe-30" class="menu-link modules invisible two">
                 <div id="menu-rfc-a30" class="menu-rfc menu-rfc-a30">
-                    <h3 data-i18n-key="menu-rfc-title" id="titleA30" class="menu-rfc__title">Empresas</h3>
-                    <ul class="menu-rfc__list menu-2">
-
-                    </ul>
-                    <nav class="pagination-container pag2">
-                        <button class="pagination-button disabled" id="prev-button" title="Previous page" aria-label="Previous page" disabled="true">
-                            &lt;
-                        </button>
-                        <button class="pagination-button disabled" id="next-button" title="Next page" aria-label="Next page" disabled="true">
-                            &gt;
-                        </button>
-                    </nav>
+                    <div class="loader loader_exp" id="loader_anexo" style="display: none;"></div>
+                        <div id="overlay-a30">
+                            <h3 data-i18n-key="menu-rfc-title" id="titleA30" class="menu-rfc__title">Empresas</h3>
+                            <ul class="menu-rfc__list menu-2">
+                            </ul>
+                            <nav class="pagination-container pag2">
+                                <button class="pagination-button disabled" id="prev-button" title="Previous page" aria-label="Previous page" disabled="true">
+                                 &lt;
+                                </button>
+                                <button class="pagination-button disabled" id="next-button" title="Next page" aria-label="Next page" disabled="true">
+                                 &gt;
+                                </button>
+                            </nav>
+                        </div>
                 </div>
                 <img id="imganexo30" src="" alt="">
             </a>
-            <a id="anexo24" class="menu-link modules toanimate"><!--onclick="loadExplorer()-->              
+            <a id="anexo24" class="menu-link modules invisible three"><!--onclick="loadExplorer()-->              
                 <div id="menu-rfc-a24" class="menu-rfc menu-rfc-a24">
                     <h3 data-i18n-key="menu-rfc-title" id="titleA24" class="menu-rfc__title">Empresas</h3>
                     <ul class="menu-rfc__list menu-3">
@@ -169,7 +174,7 @@
                 </div>
                 <img id="imgAnexo24" src="" alt="">          
             </a>
-            <a class="menu-link" href="#"><img src="../assets/img/LOGO_ZOE_360_sin_modulos.png" class="toanimate" alt="logo sin modulos"></a>
+            <a class="menu-link" href="#"><img src="../assets/img/LOGO_ZOE_360_sin_modulos.png" class="invisible" alt="logo sin modulos"></a>
         </div>
 
     </div>
@@ -213,7 +218,10 @@
                     <div class="inputField">
                         <label data-i18n-key="password" for="password">Contraseña</label>
                         <input data-i18n-key="password" type="password" name="password_anexo30" id="password_anexo30" placeholder="Password" required>
+                        <!--<img src="../assets/img/icons/eye.png" alt="password" class="icon" id="eye" title="Mostrar contraseña">-->
                         <input type="hidden" name="url_anexo30" id="url_anexo30">
+                        <input type="hidden" name="url_anexo30" id="url_anexo30">
+                        <input type="hidden" name="modal_name_a30" id="modal_name_a30">
                     </div>
 
                     <button class="btn btn--accent" id="submit_anexo" type="submit">Log in</button>
@@ -254,7 +262,9 @@
                     <div class="inputField">
                         <label data-i18n-key="password" for="password">Contraseña</label>
                         <input data-i18n-key="password" type="password" name="password_exp" id="password_exp" placeholder="Contraseña" required>
+                        <!--<img src="../assets/img/icons/eye.png" alt="password" class="icon" id="eye" title="Mostrar contraseña">-->
                         <input type="hidden" name="url_exp" id="url_exp">
+                        <input type="hidden" name="modal_name_exp" id="modal_name_exp">
                     </div>
 
                     <button class="btn btn--accent" id="submit_exp" type="submit">Log in</button>
@@ -297,6 +307,7 @@
                     <div class="inputField">
                         <label data-i18n-key="password" for="password">Contraseña</label>
                         <input type="password" name="password_anexo24" id="password_anexo24" placeholder="Password" required>
+                        <!--<img src="../assets/img/icons/eye.png" alt="password" class="icon" id="eye" title="Mostrar contraseña">-->
                         <input type="hidden" name="url_anexo24" id="url_anexo24">
                         <input type="hidden" name="empresa_anexo24" id="empresa_anexo24">
                         <input type="hidden" name="serverip_anexo24" id="serverip_anexo24">

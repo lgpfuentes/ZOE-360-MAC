@@ -14,6 +14,7 @@
     --font-color2: #101833;
     --heading-color: #D4DBF9;
     --heading-color2: linear-gradient(90deg, rgba(174,196,226,1) 71%, rgba(87,95,132,1) 100%);
+    --light-heading-color: #e2e7fa;
     --border: #A6A6A6;    
     --top-icons: invert(85%) sepia(20%) saturate(377%) hue-rotate(195deg) brightness(99%) contrast(97%);
 }
@@ -25,10 +26,12 @@ html[data-theme="dark"] {
     --font-color2: #D4DBF9;
     --bg-color: #090e1d;
     --heading-color: #423f64;
+    --light-heading-color: #1b2239;
     --heading-color2: linear-gradient(90deg, rgba(174,196,226,1) 71%, rgba(87,95,132,1) 100%);
     --border: #A6A6A6;
     --bg-color2: #1a2033;
     --top-icons: invert(85%) sepia(20%) saturate(377%) hue-rotate(195deg) brightness(99%) contrast(97%);
+    --card-bg: #101833;
 }
 
 html[data-theme="dinamico"] {
@@ -40,21 +43,25 @@ html[data-theme="dinamico"] {
     --font-color2: #101833;
     --heading-color: #D4DBF9;
     --heading-color2: linear-gradient(90deg, rgba(174,196,226,1) 71%, rgba(87,95,132,1) 100%);
+    --light-heading-color: #e2e7fa;
     --border: #A6A6A6;    
     --top-icons: invert(85%) sepia(20%) saturate(377%) hue-rotate(195deg) brightness(99%) contrast(97%);
+    --card-bg: white;
 }
 
 html[data-theme="sencillo"] {
-    --bg-color: #7e98b6;
+    --bg-color: rgba(128,132,230,1);
     --bg-color2: #ffffff;
     --primary-color: #1A2650;
     --secondary-color: #1A2650;
-    --font-color1: #101833;
+    --font-color1: #6b8cf8;
     --font-color2: #101833;
-    --heading-color:#7e98b6;
+    --heading-color:rgba(207,215,255,1);
+    --light-heading-color: #e2e7fa;
     --heading-color2: linear-gradient(90deg, rgba(174,196,226,1) 71%, rgba(87,95,132,1) 100%);
     --border: #A6A6A6;    
     --top-icons: invert(15%) sepia(10%) saturate(6926%) hue-rotate(202deg) brightness(82%) contrast(96%);
+    --card-bg: white;
 }
 
 *, ::before, ::after {
@@ -81,7 +88,7 @@ a {
 }
 
 h1, h2, h3, h4, h5 {
-    color: var(--secondary-color);
+    color: var(--font-color2);
 }
 
 body, html {
@@ -213,11 +220,12 @@ button {
 }
 
 .login__card{
-    background-color: white;
+    background-color: var(--card-bg);
     margin: 0 auto;
     max-width: 450px;
     width: 100%;
     position: relative;
+    color: var(--font-color2);
 }
 
 .login__form {
@@ -246,7 +254,6 @@ button {
 }
 
 .login__forgot {
-    color: var(--border);
     text-align: center;
     font-size: 12px;
 }
@@ -323,6 +330,7 @@ button {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding-top: 5px;
+    background: transparent;
 }
 
 .title-bar {
