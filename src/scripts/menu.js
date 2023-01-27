@@ -5,9 +5,9 @@ const jsini = require('js-ini');
 var ini = require('ini');
 const { isEmptyObject } = require('jquery');
 const { parse } = require('path');
+const { url } = require('inspector');
 const swal2 = require('sweetalert');
 const { text } = require('stream/consumers');
-const { url } = require('inspector');
 const ipc2 = window.require('electron').ipcRenderer;
 let zoeExp = document.getElementById('zoe-exp');
 let zoe30 = document.getElementById('zoe-30');
@@ -15,10 +15,10 @@ let anexo24 = document.getElementById('anexo24');
 const menuRfcExp = document.querySelector('.menu-rfc-exp');
 const menuRfcA30 = document.querySelector('.menu-rfc-a30');
 const menuRfcA24 = document.querySelector('.menu-rfc-a24');
+const modules = document.querySelectorAll('.modules');
 const rfcList1 = document.querySelector('.menu-1');
 const rfcList2 = document.querySelector('.menu-2');
 const rfcList3 = document.querySelector('.menu-3');
-const modules = document.querySelectorAll('.modules');
 const tituloExp = document.getElementById('titleExp');
 const tituloA30 = document.getElementById('titleA30');
 const tituloA24 = document.getElementById('titleA24');
@@ -29,13 +29,13 @@ let fondo = document.getElementById('fondo_pantalla');
 var lenguage = localStorage.getItem('lang');
 localStorage.active = fondo;
 
-$("#imgAnexo24").attr("src", "../assets/img/LOGO_ZOE_A24_INGLES.png").width(parseInt(343, 10)).height(160, 10);
-$("#imganexo30").attr("src", "../assets/img/LOGO_ZOE_A30_INGLES.png").width(parseInt(200, 10)).height(349, 10);
-$("#imgExp").attr("src", "../assets/img/LOGO_ZOE_EXP_INGLES-2.png").width(parseInt(264, 10)).height(254, 10);
+$("#imgAnexo24").attr("src", localStorage.getItem('urlAnexo24')).width(parseInt(343, 10)).height(160, 10);
+$("#imganexo30").attr("src", localStorage.getItem('urlAnexo30')).width(parseInt(200, 10)).height(349, 10);
+$("#imgExp").attr("src", localStorage.getItem('urlExpDigital')).width(parseInt(264, 10)).height(254, 10);
 
-function closeSesion(){
+ function closeSesion(){
   swal2({
-    title: lenguage == 'en' ? "Are you sure you want to log out?." : "¿Estas seguro que quieres cerrar sesión?",
+    title: lenguage == 'en' ? "Are you sure you want to log out?" : "¿Estas seguro que quieres cerrar sesión?",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -73,10 +73,10 @@ var empresasAnexo24 = configAnexo24.Empresas;
 
 loopIni(expedientes, rfcList1, "modal_expedientes");
 loopIni(anexo30, rfcList2, "modal_anexo_30");
-//loopIni(empresasAnexo24, rfcList3, "modal_anexo_24");
+loopIni(empresasAnexo24, rfcList3, "modal_anexo_24");
 emptyObject(expedientes, tituloExp, menuRfcExp, pag1);
 emptyObject(anexo30, tituloA30, menuRfcA30, pag2);
-//emptyObject(empresasAnexo24, tituloA24, menuRfcA24, pag3);
+emptyObject(empresasAnexo24, tituloA24, menuRfcA24, pag3);
 
 function emptyObject(menu, title, list, pag) {
   const isMyObjectEmpty = Object.keys(menu).length === 0;
@@ -98,7 +98,6 @@ function loopIni(iniKey, menu, attributeId) {
       }
       //if(iniKey[key] === key){
         for(var emp in empresa){
-          //console.log(emp, " - ", attributeId);
           if(emp === 'Expedientelink' && attributeId === 'modal_expedientes'){
             li.setAttribute("data",empresa[emp]);
           }
@@ -109,12 +108,11 @@ function loopIni(iniKey, menu, attributeId) {
             li.setAttribute("data-ip",empresa[emp]);
           }
         }
-      //}
-    
+      //}    
 
       li.setAttribute("data-open",attributeId);
       menu.appendChild(li);
-      console.log(li.outerHTML);    
+      //console.log(li.outerHTML);    
     }
   }
 
@@ -128,7 +126,7 @@ const exit = document.getElementById('exit');
 
 display(menu_rfc_exp, zoeExp);
 display(menu_rfc_a30, zoe30);
-//display(menu_rfc_a24, anexo24);
+display(menu_rfc_a24, anexo24);
 
 function display(menu_rfc, componente) {
   componente.addEventListener('click', function() {
