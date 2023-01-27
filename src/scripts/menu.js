@@ -5,6 +5,8 @@ const jsini = require('js-ini');
 var ini = require('ini');
 const { isEmptyObject } = require('jquery');
 const { parse } = require('path');
+const swal2 = require('sweetalert');
+const { text } = require('stream/consumers');
 const { url } = require('inspector');
 const ipc2 = window.require('electron').ipcRenderer;
 let zoeExp = document.getElementById('zoe-exp');
@@ -24,11 +26,34 @@ const pag1 = document.querySelector('.pag1');
 const pag2 = document.querySelector('.pag2');
 const pag3 = document.querySelector('.pag3');
 let fondo = document.getElementById('fondo_pantalla');
+var lenguage = localStorage.getItem('lang');
 localStorage.active = fondo;
 
 $("#imgAnexo24").attr("src", "../assets/img/LOGO_ZOE_A24_INGLES.png").width(parseInt(343, 10)).height(160, 10);
 $("#imganexo30").attr("src", "../assets/img/LOGO_ZOE_A30_INGLES.png").width(parseInt(200, 10)).height(349, 10);
 $("#imgExp").attr("src", "../assets/img/LOGO_ZOE_EXP_INGLES-2.png").width(parseInt(264, 10)).height(254, 10);
+
+function closeSesion(){
+  swal2({
+    title: lenguage == 'en' ? "Are you sure you want to log out?." : "¿Estas seguro que quieres cerrar sesión?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+    buttons: [lenguage == "en" ? "Cancel" : "Cancelar", lenguage == "en" ? "Yes" : "Si"],
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+        localStorage.user = '';
+        localStorage.password = '';
+        localStorage.name = '';
+        localStorage.lastName = '';
+        localStorage.phone = '';
+        localStorage.email = '';
+        localStorage.removeItem('contador');
+        location.href = './login.html';
+    } 
+  });        
+} 
 
 function loadExplorer() {
     shell.openExternal(anexo24ruta);
