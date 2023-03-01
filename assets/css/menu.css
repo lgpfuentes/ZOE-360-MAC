@@ -380,6 +380,9 @@
 .menu-rfc-a24 {
     top: 30px;
     right: 362px;
+    height: 80px;
+    text-align: center;
+   
 }
 
 .menu-rfc__title {
