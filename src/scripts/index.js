@@ -28,6 +28,7 @@ function minimizar(){
 function cerrar(){
     ipc.send("cerrar", "cerrar ventana");
     localStorage.user = '';
+    localStorage.company = '';
     localStorage.password = '';
     localStorage.name = '';
     localStorage.lastName = '';

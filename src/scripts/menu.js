@@ -47,6 +47,7 @@ $("#imgExp").attr("src", localStorage.getItem('urlExpDigital')).width(parseInt(2
         localStorage.password = '';
         localStorage.name = '';
         localStorage.lastName = '';
+        localStorage.Company = '';
         localStorage.phone = '';
         localStorage.email = '';
         localStorage.removeItem('contador');

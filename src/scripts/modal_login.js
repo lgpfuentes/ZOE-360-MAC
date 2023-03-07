@@ -141,6 +141,7 @@ for (const el of openEls) {
       localStorage.lastName ? $("#last_name_user_data").val(localStorage.lastName) : $("#last_name_user_data").val("");
       localStorage.phone ? $("#phone_user_data").val(localStorage.phone) : $("#phone_user_data").val("");
       localStorage.email ? $("#email_user_data").val(localStorage.email) : $("#email_user_data").val("");
+      localStorage.Company ? $("#Company").val(localStorage.Company) : $("#Company").val("");
     }
     if(modalId == "modal_contrasena"){
       localStorage.name ? $("#name_recupera_password").val(localStorage.name) : $("#name_recupera_password").val("");
@@ -348,6 +349,7 @@ $("#login__form_user_data").on( "submit", function( event ) {
   localStorage.password = $("#password_user_data").val();
   localStorage.name = $("#name_user_data").val();
   localStorage.lastName = $("#last_name_user_data").val();
+  localStorage.Company = $("#Company").val();
   localStorage.phone = $("#phone_user_data").val();
   localStorage.email = $("#email_user_data").val();
   if(lenguage == 'en'){
