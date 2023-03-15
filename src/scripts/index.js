@@ -44,7 +44,7 @@ $("#login__form").on( "submit", function( event ) {
     event.preventDefault();
     localStorage.user = document.getElementById("user").value;
     localStorage.password = document.getElementById("password_login").value;
-    location.href = 'menu.html';
+    location.href = 'auth.html';
 });
 
 function createBrowserWindow() {

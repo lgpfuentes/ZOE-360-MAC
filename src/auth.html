@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/menu.css">
+  <link rel="stylesheet" href="../assets/css/modal_login.css">
+  <title>Autenticación de dos factores</title>
+  <script>
+    const electron = require('electron');
+    const ipc = electron.ipcRenderer;
+    function maximizar(){
+        ipc.send("maximizar", "maximizar ventana");
+    }
+    function minimizar(){
+        ipc.send("minimizar", "minimizar ventana");
+    }
+    function cerrar(){
+        ipc.send("cerrar", "cerrar ventana");
+        /*localStorage.user = '';
+        localStorage.password = '';
+        localStorage.name = '';
+        localStorage.lastName = '';
+        localStorage.company = '';
+        localStorage.phone = '';
+        localStorage.email = '';*/
+        localStorage.removeItem('contador');
+    }
+
+  </script>
+</head>
+<body id="fondo_pantalla" class="bg-color">
+  <div class="language__menu">
+    <div class="language__control"></div>
+  </div>
+  <div class="title-bar-container">
+    <div class="title-bar"></div>
+    <div id="title-bar-btns">
+        <button class="min-btn" id="min-btn" onclick="minimizar()"> <img class="min-icon" src="../assets/img/icons/minimizar.png" alt="Minimizar"> </button>
+        <button class="max-btn" id="max-btn" onclick="maximizar()"> <img class="max-icon" src="../assets/img/icons/maximizar.png" alt="Maximizar"> </button>
+        <button class="close-btn" id="close-btn" onclick="cerrar()">  <img class="close-icon" src="../assets/img/icons/close.png" alt="Cerrar"> </button>
+    </div>
+</div>
+  <div class="auth-section absolute-center">
+    <div class="card login__card p-2 txt-center">
+      <h1>Autentifica tu cuenta</h1>
+      <p>Escanea el siguiente código QR en una aplicación de autenticación:</p>
+      <div id="qrcode"></div>
+      <form>
+        <div class="inputField">
+          <label for="token">Ingrese el código de autenticación:</label>
+          <input id="token" type="text">
+        </div>
+        <button id="submit" class="btn btn--secondary" type="submit">Ingresar</button>
+      </form>
+      <a class="underline" href="login.html">Volver a login</a>
+    </div>
+  </div>
+
+  <script src="scripts/2fa.js"></script>
+  <script src="scripts/language.js"></script>
+</body>
+</html>
