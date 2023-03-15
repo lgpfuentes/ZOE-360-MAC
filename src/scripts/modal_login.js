@@ -353,10 +353,14 @@ $("#login__form_user_data").on( "submit", function( event ) {
   localStorage.phone = $("#phone_user_data").val();
   localStorage.email = $("#email_user_data").val();
   if(lenguage == 'en'){
-    swal("", "Information Saved Successfully", "success");
+    swal("", "Information Saved Successfully", "success").then((result) => {
+      location.reload();
+    });
   }
   if(lenguage == 'es'){
-    swal("", "Información guardada con éxito", "success");
+    swal("", "Información guardada con éxito", "success").then((result) => {
+      location.reload();
+    });
   }
     
 });

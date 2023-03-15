@@ -185,7 +185,8 @@ body {
 /*---- Personalize ----*/
 .select__theme {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 2rem;
     align-items: center;
     text-align: center;
 }

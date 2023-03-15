@@ -256,3 +256,13 @@ function goToSettingsWindow(){
   // the first parameter of ipcMain.on() in app.js 
   ipc2.send('openChildWindow');  
 }
+
+const userTitle = document.querySelector('#user_conf_title');
+var userMenuTitle = document.querySelector("[data-i18n-key]").textContent;
+
+if (localStorage.name && localStorage.lastName) {
+  if(userMenuTitle = "DATOS DE USUARIO" || userMenuTitle == "USER DATA") {
+    userTitle.removeAttribute("data-i18n-Key")
+    userTitle.innerHTML = localStorage.name
+  }
+}
