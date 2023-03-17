@@ -8,9 +8,9 @@ const otpauth_url = secret.otpauth_url;
 
 QRCode.toDataURL(otpauth_url, (err, data_url) => {
     if (err) {
-    console.error(err);
+        console.error(err);
     } else {
-    document.getElementById('qrcode').innerHTML = `<img src="${data_url}" alt="Código QR">`;
+        document.getElementById('qrcode').innerHTML = `<img src="${data_url}" alt="Código QR">`;
     }
 });
 
@@ -26,9 +26,21 @@ document.getElementById('submit').addEventListener('click', (event) => {
     });
 
     if (verified) {
-    window.location.href = 'menu.html';
+        window.location.href = 'menu.html';
     } else {
-    alert('Código de autenticación incorrecto');
+        const error = document.createElement('p');
+        error.classList.add("error-message")
+        error.textContent = 'Código de autenticación incorrecto';
+        const input = document.getElementById('token');
+        input.style.borderColor = "red";
+        input.parentNode.appendChild(error);
+        input.focus();
+
+        input.addEventListener('input', () => {
+            if (error.parentNode === input.parentNode) {
+                input.parentNode.removeChild(error);
+                input.style.borderColor = "#a6a6a6"
+            }
+        });
     }
 });
-
