@@ -36,5 +36,12 @@
     "expDigitales":"Digital Files",
     "anexo30":"Annex 30 simulator",
     "anexo24":"Annex 24 system",
-    "Company": "Company"
+    "Company": "Company",
+    "account": "Account",
+    "enable2fa": "Enable two factor authentication",
+    "auth": "Authenticate your account",
+    "scan": "Scan the following QR code into an authenticator app:",
+    "authCode": "Enter the authentication code:",
+    "login": "Log in",
+    "backLogin": "Back to login"
 }

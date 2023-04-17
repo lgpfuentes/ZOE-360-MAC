@@ -41,14 +41,23 @@ function cerrar(){
 });*/
 
 $("#login__form").on( "submit", function( event ) {
-    event.preventDefault();
-    localStorage.user = document.getElementById("user").value;
-    localStorage.password = document.getElementById("password_login").value;
-    location.href = 'auth.html';
+  event.preventDefault();
+  localStorage.user = document.getElementById("user").value;
+  localStorage.password = document.getElementById("password_login").value;
+  
+    // Lee la preferencia del usuario del localStorage
+  const is2faEnabled = localStorage.getItem('2faEnabled') === 'true';
+  
+  // Redirige a la página correspondiente según la preferencia del usuario
+  if (is2faEnabled) {
+       location.href = 'auth.html';
+  } else {
+    location.href = 'menu.html';
+  }
 });
 
 function createBrowserWindow() {
-    const modalPath = path.join('file://', __dirname, 'index.html')
-    const childWindow = window.open(modalPath, 'modal', 'width=800,height=400');
-    childWindow.on('close', () => {childWindow = null})
+  const modalPath = path.join('file://', __dirname, 'index.html')
+  const childWindow = window.open(modalPath, 'modal', 'width=800,height=400');
+  childWindow.on('close', () => {childWindow = null})
 }

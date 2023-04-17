@@ -62,7 +62,7 @@ const createWindow = () => {
     });
   
     childWindow.loadFile("src/config_language.html");
-    childWindow.webContents.openDevTools()
+    //childWindow.webContents.openDevTools()
     
     childWindow.once("ready-to-show", () => {
       childWindow.show();

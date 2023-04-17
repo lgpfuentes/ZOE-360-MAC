@@ -54,7 +54,7 @@ html[data-theme="dinamico"] {
 }
 
 html[data-theme="sencillo"] {
-    --bg-color: rgba(128,132,230,1);
+    --bg-color: rgba(207,215,255,1);
     --bg-color2: #ffffff;
     --primary-color: rgba(128,132,230,1);
     --secondary-color: #1A2650;
@@ -257,7 +257,7 @@ button {
 }
 
 .inputField label {
-    text-align: center;
+    text-align: left;
 }
 .underline {
     text-decoration: underline;

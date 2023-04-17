@@ -36,5 +36,12 @@
     "expDigitales":"Expedientes digitales",
     "anexo30":"Anexo 30",
     "anexo24":"Anexo 24",
-    "Company": "Compañia"
+    "Company": "Compañia",
+    "account": "Cuenta",
+    "enable2fa": "Habilitar autenticación de dos factores",
+    "auth": "Autentifica tu cuenta",
+    "scan": "Escanea el siguiente código QR en una aplicación de autenticación:",
+    "authCode": "Ingrese el código de autenticación:",
+    "login": "ingresar",
+    "backLogin": "Volver a login"
 }

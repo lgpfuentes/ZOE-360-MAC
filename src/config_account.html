@@ -25,24 +25,25 @@
     <!-- Side navigation -->
     <h1 data-i18n-key="configuration" class="sidenav__title">Configuración</h1>
     <div class="sidenav">
+        
         <div></div>
         <a data-i18n-key="lang" class="sidenav__links" href="config_language.html">Idioma</a>
-        <!-- <a data-i18n-key="directory" class="sidenav__links active" href="config_directory.html">Directorio</a>-->
+        <!--<a data-i18n-key="directory" class="sidenav__links" href="config_directory.html"><img src="../assets/img/icons/folder.svg" alt="Directory">Directorio</a>-->
         <a data-i18n-key="edit" class="sidenav__links" href="config_edit.html">Personalización</a>
-        <a data-i18n-key="support" class="sidenav__links active" href="config_support.html">Soporte</a>
-        <a data-i18n-key="account" class="sidenav__links" href="config_account.html">Cuenta</a>
+        <a data-i18n-key="support" class="sidenav__links" href="config_support.html">Soporte</a>
+        <a data-i18n-key="account" class="sidenav__links active" href="config_account.html">Cuenta</a>
     </div>
 
     <div class="main">
-        <h2 data-i18n-key="support" class="config__title">Soporte</h2>
+        <h2 data-i18n-key="account" class="config__title">Cuenta</h2>
         <div class="config__directory">
             <div class="tabcontent">
-                <p data-i18n-key="support-text">Para obtener ayuda con respecto a la aplicación favor de contactarse con nosotros</p>
-            </div>
-            <div class="select__directory">
-                <div class="mail__group">
-                    <p class="mail__title">Soporte Zoé</p>
-                    <a class="mail" href="mailto:soporte@zoeitcustoms.com">soporte@zoeitcustoms.com</a> 
+                <div class="switch-container">
+                    <p data-i18n-key="enable2fa">Habilitar 2fa</p>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-2fa">
+                        <span class="slider"></span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -52,5 +53,24 @@
         <div class="language__control"></div>
     </div>
     <script src="scripts/language.js"></script>
+    <script src="scripts/index.js"></script>
+    <script>
+        const toggleSwitch = document.querySelector('input[type="checkbox"]');
+
+        toggleSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            localStorage.setItem('2faEnabled', true);
+        } else {
+            localStorage.setItem('2faEnabled', false);
+        }
+        });
+
+        const toggle2fa = document.querySelector('#toggle-2fa');
+        toggle2fa.checked = localStorage.getItem('2faEnabled') === 'true';
+        toggle2fa.addEventListener('change', function() {
+        const enabled = this.checked;
+        localStorage.setItem('2faEnabled', enabled);
+        });
+    </script>
 </body>
 </html>
