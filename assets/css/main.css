@@ -54,9 +54,9 @@ html[data-theme="dinamico"] {
 }
 
 html[data-theme="sencillo"] {
-    --bg-color: rgba(128,132,230,1);
+    --bg-color: rgba(207,215,255,1);
     --bg-color2: #ffffff;
-    --primary-color: rgba(128,132,230,1);
+    --primary-color: rgba(207,215,255,1);
     --secondary-color: #1A2650;
     --font-color1: #636f96;
     --font-color2: #101833;
