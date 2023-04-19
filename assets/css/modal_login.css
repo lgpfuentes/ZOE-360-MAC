@@ -78,7 +78,7 @@ a {
 
 .modal-dialog {
   position: relative;
-  max-width: 450px;
+  max-width: 375px;
   width: 100%;
   max-height: 80vh;
   height: auto;
@@ -87,6 +87,7 @@ a {
   overflow: hidden;
   cursor: default;
   z-index: 9999;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 .modal-dialog > * {
